@@ -20,10 +20,10 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.RELEASEDRAFTER_PAT }}
       - name: checkout to master
         uses: actions/checkout@master
-      - name: Write release to file
+      - name: Write release to markdown file
         run: |
           printf '%b\n' "---\nlayout: default\n---\n\n${{ steps.release_drafter.outputs.body }} " > ./docs/_releases/${{ steps.release_drafter.outputs.tag_name }}.md
-      - name: Commit release file
+      - name: Commit release mark down file
         run: |
           git config --local user.email "community@layer5.io"
           git config --local user.name "l5io"
